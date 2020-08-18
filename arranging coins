@@ -1,0 +1,25 @@
+class Solution {
+public:
+    //k(k+1) <= 2N
+    int arrangeCoins(int n) {
+        if(n == 0 || n == 1)
+            return n;
+        
+    int left = 0, right = n;
+    long long unsigned int res,k;
+    while(left <= right)
+    {
+        k = (right-left)/2 + left;
+        res = (k*(k+1))/2;
+        
+        if(res == n) return (int)k;
+        
+        if(n < res)
+            right = k-1;
+        else
+            left = k+1;
+        
+    }
+        return (int) right;
+    }
+};
